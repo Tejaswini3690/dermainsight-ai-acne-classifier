@@ -1,0 +1,2 @@
+sample_set,rows,accuracy,balanced_accuracy,macro_f1
+professor_50_stratified_gallery,50,0.98,0.9777777777777779,0.9803756658256239

@@ -1,0 +1,4 @@
+split,images,share_of_clean_data_percent,groups
+train,11486,71.99899705384567,5146
+validation,1276,7.998495580768507,565
+test,3191,20.00250736538582,1421

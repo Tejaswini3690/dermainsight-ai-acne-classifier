@@ -1,0 +1,14 @@
+{
+  "model_name": "efficientnet_b0",
+  "split": "test",
+  "rows": 3191,
+  "accuracy": 0.9893450329050454,
+  "balanced_accuracy": 0.9493083004128574,
+  "macro_precision": 0.9454472013874415,
+  "macro_recall": 0.9493083004128574,
+  "macro_f1": 0.947340217051836,
+  "weighted_f1": 0.9893805769280938,
+  "roc_auc_ovr": 0.9988576512997861,
+  "average_precision_macro": 0.9848985734160437,
+  "log_loss": 0.027335404149553856
+}

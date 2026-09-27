@@ -1,0 +1,10 @@
+path,label,label_id,group_id,predicted_label,correct,prob_Acne,prob_Comedo,prob_Clear
+dataset/Acne/Train/Acne/acne-268-v2__ProtectWyJQcm90ZWN0Il0_FocusFillWzI5NCwyMjIsIngiLDFd_JPG_jpg.rf.08d75ebc379e9e305a828242e0799cd7.jpg,Acne,0,source:acne-268-v2__protectwyjqcm90zwn0il0_focusfillwzi5ncwymjisingildfd_jpg_jpg,Acne,True,0.99992156,4.4618886e-05,3.3821536e-05
+dataset/Acne/Train/Acne/acne-268-v2__ProtectWyJQcm90ZWN0Il0_FocusFillWzI5NCwyMjIsIngiLDFd_JPG_jpg.rf.94144007cd67e51f3afb03be4e69f809.jpg,Acne,0,source:acne-268-v2__protectwyjqcm90zwn0il0_focusfillwzi5ncwymjisingildfd_jpg_jpg,Acne,True,0.99996066,3.178418e-05,7.5554763e-06
+dataset/Acne/Train/Acne/acne-268-v2__ProtectWyJQcm90ZWN0Il0_FocusFillWzI5NCwyMjIsIngiLDFd_JPG_jpg.rf.ad299dfd7929532f09327db7ef99c759.jpg,Acne,0,source:acne-268-v2__protectwyjqcm90zwn0il0_focusfillwzi5ncwymjisingildfd_jpg_jpg,Acne,True,0.8695049,0.12873183,0.001763288
+dataset/Acne/Train/Comedo/01F3MMWBFBDHKT6S57BCFQXYBJ_jpeg.rf.b85af2b6a838d1ddfe01ffc31fcb2a68.jpg,Comedo,1,source:01f3mmwbfbdhkt6s57bcfqxybj_jpeg,Acne,False,0.51480514,0.47630998,0.008884814
+dataset/Acne/Train/Comedo/01F3MMWNXPEZ1XR663SPGRBJBB_jpeg.rf.ee1fae74814685278685017ccccb9b97.jpg,Comedo,1,source:01f3mmwnxpez1xr663spgrbjbb_jpeg,Comedo,True,0.42963728,0.566829,0.0035336567
+dataset/Acne/Train/Comedo/01F3MMXNNM9CTRH5KH09BRA2EH_jpeg.rf.43352a6cc7187774b894c6ae19408dee.jpg,Comedo,1,source:01f3mmxnnm9ctrh5kh09bra2eh_jpeg,Acne,False,0.9317254,0.06659981,0.0016747784
+dataset/Acne/Train/Clear/Gordon_McDonald_0001.jpg,Clear,2,clear:gordon_mcdonald,Clear,True,1.2198567e-06,2.3859025e-06,0.9999964
+dataset/Acne/Train/Clear/Gore_Verbinski_0001.jpg,Clear,2,clear:gore_verbinski,Clear,True,9.730127e-07,9.062342e-07,0.9999981
+dataset/Acne/Train/Clear/Graeme_Lloyd_0001.jpg,Clear,2,clear:graeme_lloyd,Clear,True,3.591838e-05,0.000120341865,0.9998437

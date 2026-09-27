@@ -1,0 +1,7 @@
+label,actual_format,mode,images
+Acne,JPEG,RGB,2027
+Clear,JPEG,RGB,13233
+Comedo,JPEG,RGB,697
+Comedo,PNG,P,1
+Comedo,PNG,RGBA,1
+Comedo,WEBP,RGB,6

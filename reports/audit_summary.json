@@ -1,0 +1,16 @@
+{
+  "files": 15965,
+  "bytes": 350537655,
+  "unreadable_files": 0,
+  "exact_duplicate_groups": 11,
+  "exact_duplicate_files": 23,
+  "cross_split_source_stems": 101,
+  "cross_class_source_stems": 89,
+  "clear_lfw_like_signature": true,
+  "dimension_only_accuracy": 0.9900407140620107,
+  "label_counts": {
+    "Acne": 2027,
+    "Comedo": 705,
+    "Clear": 13233
+  }
+}

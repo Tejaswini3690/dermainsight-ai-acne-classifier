@@ -1,0 +1,10 @@
+true_label,predicted_label,path,top_score
+Acne,Acne,output/samples/gradcam/Acne_0_Acne.jpg,0.9999215602874756
+Acne,Acne,output/samples/gradcam/Acne_1_Acne.jpg,0.9999606609344482
+Acne,Acne,output/samples/gradcam/Acne_2_Acne.jpg,0.8695049285888672
+Comedo,Acne,output/samples/gradcam/Comedo_0_Acne.jpg,0.514805018901825
+Comedo,Comedo,output/samples/gradcam/Comedo_1_Comedo.jpg,0.5668291449546814
+Comedo,Acne,output/samples/gradcam/Comedo_2_Acne.jpg,0.9317255020141602
+Clear,Clear,output/samples/gradcam/Clear_0_Clear.jpg,0.9999964237213135
+Clear,Clear,output/samples/gradcam/Clear_1_Clear.jpg,0.9999980926513672
+Clear,Clear,output/samples/gradcam/Clear_2_Clear.jpg,0.9998437166213989

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="How the DermaInsight AI exploratory CNN prototype works.">
+    <link rel="icon" href="data:,">
+    <title>DermaInsight AI | About</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="simple-page">
+    <header class="site-header">
+        <a class="brand" href="{{ url_for('index') }}">DermaInsight <span>AI</span></a>
+        <nav aria-label="Primary navigation">
+            <a class="nav-link" href="{{ url_for('index') }}">Analyze</a>
+            <a class="nav-link is-active" href="{{ url_for('about') }}">About</a>
+        </nav>
+        <span class="about-status">{{ status.model.get('model_label', 'Model') }} · {{ status.status }}</span>
+    </header>
+
+    <main class="page-main about-page">
+        <section class="intro">
+            <p class="eyebrow">ABOUT THE PROJECT</p>
+            <h1>Simple image classification.</h1>
+            <p>DermaInsight AI is an academic prototype that classifies one image as Acne, Comedo, or Clear.</p>
+        </section>
+
+        <section class="about-card">
+            <div class="about-row"><span>INPUT</span><strong>RGB image resized to 224 x 224</strong></div>
+            <div class="about-row"><span>MODEL</span><strong>EfficientNet-B0 CNN</strong></div>
+            <div class="about-row"><span>OUTPUT</span><strong>One dataset label and three softmax scores</strong></div>
+            <div class="about-row"><span>EXPLANATION</span><strong>Grad-CAM attention map</strong></div>
+        </section>
+
+        <section class="about-note">
+            <p class="eyebrow">IMPORTANT LIMIT</p>
+            <p>Grad-CAM is a coarse explanation, not YOLO-style detection. It does not draw exact acne spots or bounding boxes. That would require lesion-level annotations and a separate detection model.</p>
+        </section>
+
+        <section class="about-card metrics-card">
+            <div class="metrics-heading">
+                <div>
+                    <p class="eyebrow">CURRENT SAVED RUN</p>
+                    <h2>Evaluation snapshot</h2>
+                </div>
+                <span class="about-status">{{ 'smoke run' if status.model.get('training_run_is_smoke') else 'full run' }}</span>
+            </div>
+            <div class="metrics-list">
+                <div><span>TEST ACCURACY</span><strong>{{ '%.2f'|format(metrics.get('accuracy', 0) * 100) }}%</strong></div>
+                <div><span>BALANCED ACCURACY</span><strong>{{ '%.2f'|format(metrics.get('balanced_accuracy', 0) * 100) }}%</strong></div>
+                <div><span>MACRO-F1</span><strong>{{ '%.2f'|format(metrics.get('macro_f1', 0) * 100) }}%</strong></div>
+                <div><span>TEST IMAGES</span><strong>{{ status.model.get('test_rows', '--') }}</strong></div>
+            </div>
+        </section>
+
+        <p class="about-footer"><a href="{{ url_for('index') }}">Back to analyzer</a></p>
+    </main>
+</body>
+</html>

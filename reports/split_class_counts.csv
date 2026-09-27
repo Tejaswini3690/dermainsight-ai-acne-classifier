@@ -1,0 +1,10 @@
+split,label,images
+test,Acne,404
+test,Clear,2647
+test,Comedo,140
+train,Acne,1456
+train,Clear,9527
+train,Comedo,503
+validation,Acne,162
+validation,Clear,1059
+validation,Comedo,55

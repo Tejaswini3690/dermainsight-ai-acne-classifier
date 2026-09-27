@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="DermaInsight AI exploratory acne, comedo, and clear image-label analysis.">
+    <link rel="icon" href="data:,">
+    <title>DermaInsight AI | Analyze</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="simple-page" data-page="home">
+    <header class="site-header">
+        <a class="brand" href="{{ url_for('index') }}">DermaInsight <span>AI</span></a>
+        <nav aria-label="Primary navigation">
+            <a class="nav-link is-active" href="{{ url_for('index') }}">Analyze</a>
+            <a class="nav-link" href="{{ url_for('about') }}">About</a>
+        </nav>
+        <div class="top-status" id="top-status" data-status="loading">
+            <span class="status-dot" id="top-status-dot" aria-hidden="true"></span>
+            <span id="top-status-label">Loading model</span>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <section class="intro">
+            <p class="eyebrow">IMAGE LABEL REVIEW</p>
+            <h1>Upload one image.<br>Get one clear result.</h1>
+            <p>Exploratory classification for the dataset labels Acne, Comedo, and Clear.</p>
+        </section>
+
+        <section class="analyzer-card" aria-labelledby="analyzer-title">
+            <div class="card-heading">
+                <div>
+                    <p class="eyebrow">ANALYZE</p>
+                    <h2 id="analyzer-title">Choose an image</h2>
+                </div>
+                <div class="runtime-status" aria-label="Model runtime status">
+                    <span class="status-dot"></span>
+                    <span id="runtime-state-title">Preparing model</span>
+                    <small id="runtime-state-copy">Loading the local model.</small>
+                </div>
+            </div>
+
+            <div class="runtime-details">
+                <span>MODEL <strong id="runtime-model">EfficientNet-B0</strong></span>
+                <span>INPUT <strong id="runtime-input">RGB / 224 x 224</strong></span>
+                <span>OUTPUT <strong>3 labels</strong></span>
+            </div>
+
+            <form id="prediction-form" action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+                <input id="image-input" type="file" name="image" accept=".jpg,.jpeg,.png,.webp,image/*" hidden>
+                <button class="dropzone" id="dropzone" type="button" aria-label="Choose an image to analyze">
+                    <span class="upload-plus" aria-hidden="true">+</span>
+                    <strong>Choose image</strong>
+                    <small>or drag JPG, PNG, or WEBP here · max 12 MB</small>
+                </button>
+
+                <div class="selected-file" id="selected-file" hidden>
+                    <div class="preview-thumb"><img id="input-preview" alt="Selected image preview"></div>
+                    <div class="selected-file-copy">
+                        <span class="eyebrow">SELECTED INPUT</span>
+                        <strong id="selected-file-name">--</strong>
+                        <small id="selected-file-meta">--</small>
+                    </div>
+                    <button class="remove-button" type="button" id="remove-file" aria-label="Remove selected image">&times;</button>
+                </div>
+
+                <button class="primary-button" id="analyze-button" type="submit" disabled>Run analysis <span aria-hidden="true">&rarr;</span></button>
+                <p class="boundary-note">Research demonstration only. Not a medical diagnostic tool.</p>
+            </form>
+        </section>
+
+        <section class="log-card" aria-labelledby="log-title">
+            <div class="log-heading">
+                <div>
+                    <p class="eyebrow">LIVE LOG</p>
+                    <h2 id="log-title">Activity</h2>
+                </div>
+                <span class="connection-state" id="connection-state"><span class="status-dot"></span> connecting</span>
+            </div>
+            <div class="log-window" id="log-window" role="log" aria-live="polite" aria-label="Model activity log">
+                <div class="log-empty" id="log-empty">Waiting for the model service...</div>
+            </div>
+        </section>
+
+        <section class="result-section" id="result-section" hidden aria-labelledby="result-title">
+            <div class="result-heading">
+                <div>
+                    <p class="eyebrow">RESULT</p>
+                    <h2 id="result-title">Model output</h2>
+                </div>
+                <button class="secondary-button" id="new-analysis" type="button">New image</button>
+            </div>
+
+            <div class="result-summary">
+                <div>
+                    <span class="eyebrow">TOP DATASET LABEL</span>
+                    <div class="result-label" id="result-label">--</div>
+                    <p><span id="result-model">EfficientNet-B0</span> · <span id="result-duration">--</span></p>
+                </div>
+                <div class="result-score-block">
+                    <span class="eyebrow">MODEL SCORE</span>
+                    <strong id="result-score">--</strong>
+                </div>
+            </div>
+
+            <div class="result-images">
+                <figure>
+                    <div class="image-label"><span>INPUT</span><span id="result-image-meta">--</span></div>
+                    <div class="result-image-frame"><img id="result-input-image" alt="Uploaded input image"></div>
+                    <figcaption>Image supplied to the model.</figcaption>
+                </figure>
+                <figure>
+                    <div class="image-label"><span>EXPLANATION</span><span>GRAD-CAM</span></div>
+                    <div class="result-image-frame"><img id="result-explanation-image" alt="Grad-CAM explanation heatmap"></div>
+                    <figcaption>Coarse attention map, not exact acne-spot boxes.</figcaption>
+                </figure>
+            </div>
+
+            <div class="result-details">
+                <div class="probability-card">
+                    <p class="eyebrow">SCORE DISTRIBUTION</p>
+                    <div id="probability-list" class="probability-list"></div>
+                </div>
+                <div class="explanation-card">
+                    <p class="eyebrow">INTERPRETATION</p>
+                    <h3 id="explanation-title">--</h3>
+                    <p id="explanation-context">--</p>
+                    <p class="small-copy" id="explanation-method">--</p>
+                    <p class="small-copy muted" id="explanation-score-note">--</p>
+                </div>
+            </div>
+            <div class="notice-strip" id="result-notice">--</div>
+        </section>
+    </main>
+
+    <div class="analysis-loader" id="analysis-loader" hidden aria-live="assertive">
+        <div class="loader-card">
+            <div class="loader-spinner" aria-hidden="true"></div>
+            <p class="eyebrow">ANALYSIS IN PROGRESS</p>
+            <h2 id="loader-title">Preparing image</h2>
+            <p id="loader-copy">The local model is working through the input.</p>
+            <div class="loader-track"><span id="loader-track-fill"></span></div>
+            <div class="loader-steps">
+                <span class="is-active" data-loader-step="input">INPUT</span>
+                <span data-loader-step="model">MODEL</span>
+                <span data-loader-step="explanation">EXPLANATION</span>
+            </div>
+        </div>
+    </div>
+
+    {% if result %}
+    <script id="initial-result" type="application/json">{{ result|tojson }}</script>
+    {% endif %}
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
